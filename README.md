@@ -1,2 +1,3 @@
 # HockeyTV
-~Illegally~ download game video directly from HockeyTV for free
+
+Download full game video from HockeyTV for free
