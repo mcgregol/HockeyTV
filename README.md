@@ -1,4 +1,4 @@
-# htv-ripper
+# htv-grabber
 Download full game video from HockeyTV for free
 
 ## Dependencies:
