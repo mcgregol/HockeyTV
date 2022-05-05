@@ -1,3 +1,2 @@
 # HockeyTV
-~APCSA Final~
-Download game video directly from HockeyTV for free
+~Il~legally download game video directly from HockeyTV for free
