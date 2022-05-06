@@ -2,12 +2,12 @@ from seleniumwire import webdriver
 from yt_dlp import YoutubeDL
 import time, getpass
 
-driver = webdriver.Firefox(executable_path='geckodriver.exe')
+class User:
+    def __init__(self, u, p):
+        self.user = u
+        self.passwd = p
 
-driver.get('https://google.com')
+myUser = User(input("Enter username: "), getpass.getpass("Enter password: "))
 
-class Vod:
-    def __init__(self, url):
-        self.url = url
-    
-    def getVod()
+print(myUser.user)
+print(myUser.passwd)
