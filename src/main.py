@@ -7,7 +7,7 @@ class User:
         self.user = u
         self.passwd = p
 
-myUser = User(input("Enter username: "), getpass.getpass("Enter password: "))
+my_user = User(input("Enter username: "), getpass.getpass("Enter password: "))
 
-print(myUser.user)
-print(myUser.passwd)
+print(my_user.user)
+print(my_user.passwd)
