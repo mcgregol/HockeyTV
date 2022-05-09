@@ -6,8 +6,10 @@ class User:
     def __init__(self, u, p):
         self.user = u
         self.passwd = p
+    
+    def run(self):
+        browser = webdriver.Firefox()
+        browser.get('https://1.1.1.1')
 
 my_user = User(input("Enter username: "), getpass.getpass("Enter password: "))
-
-print(my_user.user)
-print(my_user.passwd)
+my_user.run()
