@@ -9,7 +9,7 @@ class User:
     
     def run(self):
         browser = webdriver.Firefox()
-        browser.get('https://1.1.1.1')
+        browser.get('https://www.hockeytv.com/login')
         time.sleep(1)
         browser.quit()
 
