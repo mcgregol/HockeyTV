@@ -10,6 +10,8 @@ class User:
     def run(self):
         browser = webdriver.Firefox()
         browser.get('https://1.1.1.1')
+        time.sleep(1)
+        browser.quit()
 
 my_user = User(input("Enter username: "), getpass.getpass("Enter password: "))
 my_user.run()
