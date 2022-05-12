@@ -24,16 +24,14 @@ class User:
         sign_in.click()
 
         try:
-            search_wait = WebDriverWait(browser, 30).until(EC.presence_of_element_located((By.XPATH, '//*[@id="term"]')))
             print("Navigate to desired game video...")
-
-            vid_wait = WebDriverWait(browser, 120).until(EC.presence_of_all_elements_located((By.XPATH, '//*[@id="contentArea"]/app-game/div/div[2]/div/app-game-summary/div/div[1]/div[2]/div')))
-            print("nice!")
-
+            vod_link = browser.wait_for_request('/main.m3u8', timeout=120)
+            
             browser.quit()
+            print("succes!\nLink is: " + vod_link)
         except:
             print("incorrect credentials or bad connection...")
             browser.quit()
 
-my_user = User(input("Enter HockeyTV email: "), getpass.getpass("Enter HockeyTV password: "))
+my_user = User(input("Enter HockeyTV email: "), getpass.getpass("Enter HockeyTV password(hidden): "))
 my_user.run()
