@@ -13,5 +13,6 @@ class User:
         time.sleep(1)
         browser.quit()
 
-my_user = User(input("Enter username: "), getpass.getpass("Enter password: "))
+#my_user = User(input("Enter username: "), getpass.getpass("Enter password: "))
+my_user = User("mcgregol", "p@$$w0rd")
 my_user.run()
