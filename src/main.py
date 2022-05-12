@@ -8,11 +8,14 @@ class User:
         self.passwd = p
     
     def run(self):
-        browser = webdriver.Firefox()
+        browser = webdriver.Chrome()
         browser.get('https://www.hockeytv.com/login')
-        time.sleep(1)
+        email_input = browser.find_element(By.XPATH, '//*[@id="emailInput"]')
+        passwd_input = browser.find_element(By.XPATH, '//*[@id="passwordInput"]')
+        email_input.send_keys(self.user)
+        passwd_input.send_keys(self.passwd)
+        time.sleep(10)
         browser.quit()
 
-#my_user = User(input("Enter username: "), getpass.getpass("Enter password: "))
-my_user = User("mcgregol", "p@$$w0rd")
+my_user = User(input("Enter username: "), getpass.getpass("Enter password: "))
 my_user.run()
