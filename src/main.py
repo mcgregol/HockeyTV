@@ -1,6 +1,6 @@
 from seleniumwire import webdriver
 from yt_dlp import YoutubeDL
-import time, getpass
+import getpass, time
 
 class User:
     def __init__(self, u, p):
