@@ -12,7 +12,7 @@ class User:
         self.passwd = p
     
     def run(self):
-        browser = webdriver.Chrome()
+        browser = webdriver.Firefox()
         browser.get('https://www.hockeytv.com/login')
 
         email_input = browser.find_element(By.XPATH, '//*[@id="emailInput"]')
@@ -25,12 +25,15 @@ class User:
 
         try:
             search_wait = WebDriverWait(browser, 30).until(EC.presence_of_element_located((By.XPATH, '//*[@id="term"]')))
-            print("yay it loaded")
-            time.sleep(5)
+            print("Navigate to desired game video...")
+
+            vid_wait = WebDriverWait(browser, 120).until(EC.presence_of_all_elements_located((By.XPATH, '//*[@id="contentArea"]/app-game/div/div[2]/div/app-game-summary/div/div[1]/div[2]/div')))
+            print("nice!")
+
             browser.quit()
         except:
             print("incorrect credentials or bad connection...")
             browser.quit()
 
-my_user = User(input("Enter username: "), getpass.getpass("Enter password: "))
+my_user = User(input("Enter HockeyTV email: "), getpass.getpass("Enter HockeyTV password: "))
 my_user.run()
