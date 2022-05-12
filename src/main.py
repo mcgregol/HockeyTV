@@ -19,6 +19,7 @@ class User:
         passwd_input.send_keys(self.passwd)
         time.sleep(10)
         browser.quit()
+        ## implement webdriver wait on search bar
 
 my_user = User(input("Enter username: "), getpass.getpass("Enter password: "))
 my_user.run()
