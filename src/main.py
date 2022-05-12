@@ -23,11 +23,14 @@ class User:
         passwd_input.send_keys(self.passwd)
         sign_in.click()
 
-        wait = WebDriverWait(browser, 10)
-        search_wait = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="term"]')))
-
-        time.sleep(5)
-        browser.quit()
+        try:
+            search_wait = WebDriverWait(browser, 30).until(EC.presence_of_element_located((By.XPATH, '//*[@id="term"]')))
+            print("yay it loaded")
+            time.sleep(5)
+            browser.quit()
+        except:
+            print("incorrect credentials or bad connection...")
+            browser.quit()
 
 my_user = User(input("Enter username: "), getpass.getpass("Enter password: "))
 my_user.run()
