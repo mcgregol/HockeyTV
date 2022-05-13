@@ -12,7 +12,12 @@ class User:
         self.passwd = p
     
     def run(self):
-        browser = webdriver.Firefox()
+        options = {
+            'exclude_hosts': ['hockeytv.com', 'google-analytics.com', 'hockeytvadmin.com', 'media.net', 'doubleclick.net', 'crwdcntrl.net', 'agkn.net']
+        }
+        browser = webdriver.Chrome(seleniumwire_options=options)
+        #browser.scopes = ['.*akamaized.*']
+
         browser.get('https://www.hockeytv.com/login')
 
         email_input = browser.find_element(By.XPATH, '//*[@id="emailInput"]')
@@ -25,7 +30,8 @@ class User:
 
         try:
             print("Navigate to desired game video...")
-            vod_link = browser.wait_for_request('/main.m3u8', timeout=120)
+            ##use endswith?
+            vod_link = browser.wait_for_request('/main.m3u8', timeout=500)
             
             browser.quit()
             print("succes!\nLink is: " + vod_link)
