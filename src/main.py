@@ -6,6 +6,31 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
 from yt_dlp import YoutubeDL
 import getpass, time
+import yt_dlp
+
+class MyLogger:
+    def debug(self, msg):
+        # For compatibility with youtube-dl, both debug and info are passed into debug
+        # You can distinguish them by the prefix '[debug] '
+        if msg.startswith('[debug] '):
+            pass
+        else:
+            self.info(msg)
+
+    def info(self, msg):
+        pass
+
+    def warning(self, msg):
+        pass
+
+    def error(self, msg):
+        print(msg)
+
+
+# ℹ️ See "progress_hooks" in help(yt_dlp.YoutubeDL)
+def my_hook(d):
+    if d['status'] == 'finished':
+        print('Done downloading, now post-processing ...')
 
 class User:
     def __init__(self, u, p):
@@ -31,7 +56,8 @@ class User:
 
         try:
             print("Navigate to desired game video...")
-            vod_link = browser.wait_for_request('/main.m3u8', timeout=500)
+            vod_link = str(browser.wait_for_request('/main.m3u8', timeout=500))
+            print("Grabbed video location!\nDownloading, please be patient...")
             
             browser.quit()
             return vod_link
@@ -40,4 +66,13 @@ class User:
             browser.quit()
 
 my_user = User(input("Enter HockeyTV email: "), getpass.getpass("Enter HockeyTV password(hidden): "))
-my_user.get_link()
+url = my_user.get_link()
+
+ydl_opts = {
+    'logger': MyLogger(),
+    'progress_hooks': [my_hook],
+}
+
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    ydl.download(url)
+print("All done!")
