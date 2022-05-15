@@ -1,3 +1,4 @@
+from http.server import executable
 from seleniumwire import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -36,7 +37,9 @@ class User:
         firefox_profile = webdriver.FirefoxProfile()
         firefox_profile.set_preference("browser.privatebrowsing.autostart", True)
 
-        browser = webdriver.Firefox(firefox_profile=firefox_profile)
+        browser = webdriver.Firefox(
+            firefox_profile=firefox_profile,
+            executable_path='bin\geckodriver.exe')
         browser.scopes = ['.*akamaized.*']
 
         browser.get('https://www.hockeytv.com/login')
