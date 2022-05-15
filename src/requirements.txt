@@ -1,4 +1,3 @@
 wheel
 yt-dlp
 selenium-wire
-appjar
