@@ -8,4 +8,4 @@ Download full game video from HockeyTV for free
 Easily install with ```pip install -r requirements.txt```
 
 ## Usage
-```python main.py```
+```python src/main.py```
