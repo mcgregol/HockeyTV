@@ -6,6 +6,7 @@ Download full game video from HockeyTV for free
 ### Pip
 - ```yt-dlp```
 - ```selenium-wire```
+
 Easily install with ```pip install -r src/requirements.txt```
 
 ## Usage
