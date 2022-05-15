@@ -74,3 +74,5 @@ ydl_opts = {
 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
     ydl.download(url)
 print("All done!")
+
+## TODO: add filedialog to select path for final product
