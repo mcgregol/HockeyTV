@@ -6,7 +6,7 @@ Download full game video from HockeyTV for free
 - ```selenium-wire```
 - On linux: install ```tk```
 
-Easily install with ```pip install -r requirements.txt```
+Easily install with ```pip install -r src/requirements.txt```
 
 ## Usage
 ```python src/main.py```
