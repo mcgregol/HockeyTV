@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options
 from yt_dlp import YoutubeDL
 import getpass, time
 
@@ -11,8 +12,11 @@ class User:
         self.user = u
         self.passwd = p
     
-    def run(self):
-        browser = webdriver.Firefox()
+    def get_link(self):
+        firefox_profile = webdriver.FirefoxProfile()
+        firefox_profile.set_preference("browser.privatebrowsing.autostart", True)
+
+        browser = webdriver.Firefox(firefox_profile=firefox_profile)
         browser.scopes = ['.*akamaized.*']
 
         browser.get('https://www.hockeytv.com/login')
@@ -27,13 +31,13 @@ class User:
 
         try:
             print("Navigate to desired game video...")
-            vod_link = browser.wait_for_request('main.m3u8', timeout=500)
+            vod_link = browser.wait_for_request('/main.m3u8', timeout=500)
             
             browser.quit()
-            print("succes!\nLink is: " + vod_link)
+            return vod_link
         except:
             print("incorrect credentials or bad connection...")
             browser.quit()
 
 my_user = User(input("Enter HockeyTV email: "), getpass.getpass("Enter HockeyTV password(hidden): "))
-my_user.run()
+my_user.get_link()
