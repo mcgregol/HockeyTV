@@ -4,6 +4,7 @@ Download full game video from HockeyTV for free
 ## Dependencies
 - ```yt-dlp```
 - ```selenium-wire```
+- On linux: install ```tk```
 
 Easily install with ```pip install -r requirements.txt```
 
