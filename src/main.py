@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
+from tkinter import filedialog as fd
 from yt_dlp import YoutubeDL
 import getpass, time
 import yt_dlp
@@ -55,7 +56,7 @@ class User:
         try:
             print("Navigate to desired game video...")
             vod_link = str(browser.wait_for_request('/main.m3u8', timeout=500))
-            print("Grabbed video location!\nDownloading, please be patient...")
+            print("Grabbed video location!\nPlease select where you would like to save game video...")
             
             browser.quit()
             return vod_link
@@ -66,13 +67,14 @@ class User:
 my_user = User(input("Enter HockeyTV email: "), getpass.getpass("Enter HockeyTV password(hidden): "))
 url = my_user.get_link()
 
+
 ydl_opts = {
     'logger': MyLogger(),
     'progress_hooks': [my_hook],
+    'outtmpl': fd.asksaveasfilename() + ".mp4"
 }
 
 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    print("Downloading!")
     ydl.download(url)
 print("All done!")
-
-## TODO: add filedialog to select path for final product
