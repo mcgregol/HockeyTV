@@ -67,7 +67,6 @@ url = my_user.get_link()
 
 save_as = fd.asksaveasfilename() + ".mp4"
 
-
 ydl_opts = {
     'logger': MyLogger(),
     'progress_hooks': [my_hook],
@@ -78,4 +77,5 @@ with yt_dlp.YoutubeDL(ydl_opts) as ydl:
     print("Beginning download!\nPress CTRL + C at any time to abort...")
     time.sleep(5)
     ydl.download(url)
+
 print("All done!\nVideo saved as \"" + save_as + "\"")
