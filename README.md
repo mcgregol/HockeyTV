@@ -5,7 +5,7 @@ Download full game video from HockeyTV for free
 - Firefox
 - On linux:
     - install ```tk``` with your package manager
-    - install geckodriver
+    - install ```geckodriver```
 - yt-dlp
     - ```pip install yt-dlp```
 - selenium-wire
