@@ -1,4 +1,3 @@
-from http.server import executable
 from seleniumwire import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -12,15 +11,15 @@ import yt_dlp
 class MyLogger:
     def debug(self, msg):
         if msg.startswith('[debug] '):
-            pass
+            print(msg)
         else:
             self.info(msg)
 
     def info(self, msg):
-        pass
+        print(msg)
 
     def warning(self, msg):
-        pass
+        print(msg)
 
     def error(self, msg):
         print(msg)
@@ -39,8 +38,7 @@ class User:
         firefox_profile.set_preference("browser.privatebrowsing.autostart", True)
 
         browser = webdriver.Firefox(
-            firefox_profile=firefox_profile,
-            executable_path='bin\geckodriver.exe')
+            firefox_profile=firefox_profile)
         browser.scopes = ['.*akamaized.*']
 
         browser.get('https://www.hockeytv.com/login')
