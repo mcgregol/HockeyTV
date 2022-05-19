@@ -65,14 +65,17 @@ class User:
 my_user = User(input("Enter HockeyTV email: "), getpass.getpass("Enter HockeyTV password(hidden): "))
 url = my_user.get_link()
 
+save_as = fd.asksaveasfilename() + ".mp4"
+
 
 ydl_opts = {
     'logger': MyLogger(),
     'progress_hooks': [my_hook],
-    'outtmpl': fd.asksaveasfilename() + ".mp4"
-}
+    'outtmpl': save_as
+    }
 
 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-    print("Downloading!")
+    print("Beginning download!\nPress CTRL + C at any time to abort...")
+    time.sleep(5)
     ydl.download(url)
-print("All done!")
+print("All done!\nVideo saved as \"" + save_as + "\"")
