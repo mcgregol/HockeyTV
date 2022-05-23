@@ -81,7 +81,7 @@ app.addLabelEntry("HockeyTV Email:")
 app.addLabelSecretEntry("HockeyTV Password:")
 
 app.addSaveEntry("Video location")
-save_as = app.getEntry("Video location")
+save_as = app.getEntry("Video location") + ".mp4"
 
 app.addButtons(["Login", "Exit"], press_login)
 
