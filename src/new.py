@@ -67,15 +67,15 @@ app = gui()
 
 def press_login(button):
     global url
-    my_user = User(app.getEntry("HockeyTV Email"), app.getEntry("HockeyTV Password"))
+    my_user = User(app.getEntry("HockeyTV Email:"), app.getEntry("HockeyTV Password:"))
     url = my_user.get_link()
     app.stop()
 
 app.addLabel("htv-grabber", "htv-grabber by Liam McGregor")
 app.setLabelBg("htv-grabber", "green")
 
-app.addLabelEntry("HockeyTV Email")
-app.addLabelSecretEntry("HockeyTV Password")
+app.addLabelEntry("HockeyTV Email:")
+app.addLabelSecretEntry("HockeyTV Password:")
 
 app.addButtons(["Login"], press_login)
 
