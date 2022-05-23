@@ -66,10 +66,13 @@ class User:
 app = gui()
 
 def press_login(button):
-    global url
-    my_user = User(app.getEntry("HockeyTV Email:"), app.getEntry("HockeyTV Password:"))
-    url = my_user.get_link()
-    app.stop()
+    if button == "Submit":
+        global url
+        my_user = User(app.getEntry("HockeyTV Email:"), app.getEntry("HockeyTV Password:"))
+        url = my_user.get_link()
+        app.stop()
+    else:
+        exit()
 
 app.addLabel("htv-grabber", "htv-grabber by Liam McGregor")
 app.setLabelBg("htv-grabber", "green")
@@ -77,12 +80,12 @@ app.setLabelBg("htv-grabber", "green")
 app.addLabelEntry("HockeyTV Email:")
 app.addLabelSecretEntry("HockeyTV Password:")
 
-app.addButtons(["Login"], press_login)
+app.addSaveEntry("Video location")
+save_as = app.getEntry("Video location")
+
+app.addButtons(["Login", "Exit"], press_login)
 
 app.go()
-
-
-save_as = fd.asksaveasfilename() + ".mp4"
 
 ydl_opts = {
     'logger': MyLogger(),
