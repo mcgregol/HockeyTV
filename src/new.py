@@ -104,4 +104,4 @@ with yt_dlp.YoutubeDL(ydl_opts) as ydl:
 print("All done!\nVideo saved as \"" + save_as + "\"")
 
 ## IMPLEMENT MULTIPLE VIDEO DOWNLOAD
-## NOT SAVING TO RIGHT PATH
+## NOT SAVING TO RIGHT PATH (TRY SAVEASFILE(NAME) INSTEAD
