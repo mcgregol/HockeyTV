@@ -73,7 +73,7 @@ def press_login(button):
         url = my_user.get_link()
     elif button == "Select save location":
         global save_as
-        save_as = str(fd.asksaveasfile(defaultextension='.mp4'))
+        save_as = str(fd.asksaveasfilename(defaultextension='.mp4'))
     else:
         app.stop()
         exit()
