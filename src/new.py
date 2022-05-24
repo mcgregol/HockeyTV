@@ -74,7 +74,7 @@ def press_login(button):
         url = my_user.get_link()
     elif button == "Select save location":
         save_as = str(fd.asksaveasfilename(defaultextension='.mp4'))
-        app.setLabel("path", save_as)
+        app.setLabel("path", "Saving to: " + save_as)
     else:
         app.stop()
         exit()
@@ -86,7 +86,7 @@ app.addLabelEntry("HockeyTV Email:")
 app.addLabelSecretEntry("HockeyTV Password:")
 
 app.addButtons(["Select save location"], press_login)
-app.addLabel("path", text="/path/to/video")
+app.addLabel("path", text="Saving to: /path/to/video")
 
 app.addButtons(["Run", "Exit"], press_login)
 
