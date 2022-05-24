@@ -66,13 +66,13 @@ class User:
 app = gui()
 
 def press_login(button):
+    global save_as
     if button == "Run":
         global url
         my_user = User(app.getEntry("HockeyTV Email:"), app.getEntry("HockeyTV Password:"))
         app.stop()
         url = my_user.get_link()
     elif button == "Select save location":
-        global save_as
         save_as = str(fd.asksaveasfilename(defaultextension='.mp4'))
     else:
         app.stop()
