@@ -54,7 +54,7 @@ class User:
         try:
             print("Navigate to desired game video...")
             vod_link = str(browser.wait_for_request('/main.m3u8', timeout=500))
-            print("Grabbed video location!\nPlease select where you would like to save game video...")
+            print("Grabbed video location!")
             
             browser.quit()
             return vod_link
@@ -68,9 +68,10 @@ def press_login(button):
     if button == "Run":
         global url
         my_user = User(app.getEntry("HockeyTV Email:"), app.getEntry("HockeyTV Password:"))
-        url = my_user.get_link()
         app.stop()
+        url = my_user.get_link()
     else:
+        app.stop()
         exit()
 
 app.addLabel("htv-grabber", "htv-grabber by Liam McGregor")
