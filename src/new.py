@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
-from tkinter import filedialog as fd
 from yt_dlp import YoutubeDL
 from appJar import gui
 import getpass, time
@@ -66,7 +65,7 @@ class User:
 app = gui()
 
 def press_login(button):
-    if button == "Submit":
+    if button == "Run":
         global url
         my_user = User(app.getEntry("HockeyTV Email:"), app.getEntry("HockeyTV Password:"))
         url = my_user.get_link()
@@ -83,7 +82,7 @@ app.addLabelSecretEntry("HockeyTV Password:")
 app.addSaveEntry("Video location")
 save_as = app.getEntry("Video location") + ".mp4"
 
-app.addButtons(["Login", "Exit"], press_login)
+app.addButtons(["Run", "Exit"], press_login)
 
 app.go()
 
