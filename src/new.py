@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
 from yt_dlp import YoutubeDL
 from appJar import gui
+from tkinter import filedialog as fd
 import getpass, time
 import yt_dlp
 
@@ -70,6 +71,9 @@ def press_login(button):
         my_user = User(app.getEntry("HockeyTV Email:"), app.getEntry("HockeyTV Password:"))
         app.stop()
         url = my_user.get_link()
+    elif button == "Select save location":
+        global save_as
+        save_as = str(fd.asksaveasfile(defaultextension='.mp4'))
     else:
         app.stop()
         exit()
@@ -80,8 +84,7 @@ app.setLabelBg("htv-grabber", "green")
 app.addLabelEntry("HockeyTV Email:")
 app.addLabelSecretEntry("HockeyTV Password:")
 
-app.addSaveEntry("Video location")
-save_as = app.getEntry("Video location") + ".mp4"
+app.addButtons(["Select save location"], press_login)
 
 app.addButtons(["Run", "Exit"], press_login)
 
@@ -101,3 +104,4 @@ with yt_dlp.YoutubeDL(ydl_opts) as ydl:
 print("All done!\nVideo saved as \"" + save_as + "\"")
 
 ## IMPLEMENT MULTIPLE VIDEO DOWNLOAD
+## NOT SAVING TO RIGHT PATH
