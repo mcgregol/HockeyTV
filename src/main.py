@@ -82,11 +82,15 @@ def press_login(button):
 app.addLabel("htv-grabber", "htv-grabber by Liam McGregor")
 app.setLabelBg("htv-grabber", "green")
 
+app.startLabelFrame("Login")
 app.addLabelEntry("HockeyTV Email:")
 app.addLabelSecretEntry("HockeyTV Password:")
+app.stopLabelFrame()
 
+app.startLabelFrame("Save video")
 app.addButtons(["Select save location"], press_login)
 app.addLabel("path", text="Saving to: /path/to/video")
+app.stopLabelFrame()
 
 app.addButtons(["Run", "Exit"], press_login)
 
