@@ -3,8 +3,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
-from tkinter import filedialog as fd
 from yt_dlp import YoutubeDL
+from appJar import gui
+from tkinter import filedialog as fd
 import getpass, time
 import yt_dlp
 
@@ -54,7 +55,7 @@ class User:
         try:
             print("Navigate to desired game video...")
             vod_link = str(browser.wait_for_request('/main.m3u8', timeout=500))
-            print("Grabbed video location!\nPlease select where you would like to save game video...")
+            print("Grabbed video location!")
             
             browser.quit()
             return vod_link
@@ -62,10 +63,34 @@ class User:
             print("incorrect credentials or bad connection...")
             browser.quit()
 
-my_user = User(input("Enter HockeyTV email: "), getpass.getpass("Enter HockeyTV password(hidden): "))
-url = my_user.get_link()
+app = gui()
 
-save_as = fd.asksaveasfilename() + ".mp4"
+def press_login(button):
+    global save_as
+    if button == "Run":
+        global url
+        my_user = User(app.getEntry("HockeyTV Email:"), app.getEntry("HockeyTV Password:"))
+        app.stop()
+        url = my_user.get_link()
+    elif button == "Select save location":
+        save_as = str(fd.asksaveasfilename(defaultextension='.mp4'))
+        app.setLabel("path", "Saving to: " + save_as)
+    else:
+        app.stop()
+        exit()
+
+app.addLabel("htv-grabber", "htv-grabber by Liam McGregor")
+app.setLabelBg("htv-grabber", "green")
+
+app.addLabelEntry("HockeyTV Email:")
+app.addLabelSecretEntry("HockeyTV Password:")
+
+app.addButtons(["Select save location"], press_login)
+app.addLabel("path", text="Saving to: /path/to/video")
+
+app.addButtons(["Run", "Exit"], press_login)
+
+app.go()
 
 ydl_opts = {
     'logger': MyLogger(),
@@ -79,5 +104,3 @@ with yt_dlp.YoutubeDL(ydl_opts) as ydl:
     ydl.download(url)
 
 print("All done!\nVideo saved as \"" + save_as + "\"")
-
-## IMPLEMENT MULTIPLE VIDEO DOWNLOAD
