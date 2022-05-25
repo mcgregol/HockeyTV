@@ -94,6 +94,8 @@ app.stopLabelFrame()
 
 app.addButtons(["Run", "Exit"], press_login)
 
+app.addImage("logo", "../logo.ppm", compound=None)
+
 app.go()
 
 ydl_opts = {
