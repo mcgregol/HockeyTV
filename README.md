@@ -13,5 +13,7 @@ Download full game video from HockeyTV for free
 
 Easily install with ```pip install -r src/requirements.txt```
 
+```ffmpeg``` recommended but not required
+
 ## Usage
 ```python src/main.py```
