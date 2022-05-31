@@ -10,8 +10,12 @@ Download full game video from HockeyTV for free
     - ```pip install yt-dlp```
 - selenium-wire
     - ```pip install selenium-wire```
+- appJar
+    - ```pip install appjar```
 
 Easily install with ```pip install -r src/requirements.txt```
+
+```ffmpeg``` recommended but not required
 
 ## Usage
 ```python src/main.py```
