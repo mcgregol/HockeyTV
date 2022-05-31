@@ -38,6 +38,7 @@ class User:
         firefox_profile = webdriver.FirefoxProfile()
         firefox_profile.set_preference("browser.privatebrowsing.autostart", True)
 
+        # add executable_path='bin\\geckodriver.exe' on windows
         browser = webdriver.Firefox(
             firefox_profile=firefox_profile)
         browser.scopes = ['.*akamaized.*']
