@@ -81,7 +81,7 @@ def press_login(button):
         exit()
 
 app.addLabel("htv-grabber", "htv-grabber by Liam McGregor")
-app.setLabelBg("htv-grabber", "green")
+app.setLabelBg("htv-grabber", "#00a000")
 
 app.startLabelFrame("Login")
 app.addLabelEntry("HockeyTV Email:")
