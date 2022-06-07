@@ -4,7 +4,7 @@ Download full game video from HockeyTV for free
 ## Dependencies
 - Firefox
 - ### On linux
-    - install tk with your package manager
+    - install tk
     - install geckodriver
 
 
